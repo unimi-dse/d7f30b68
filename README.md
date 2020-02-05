@@ -1,5 +1,5 @@
 ---
-title: 'nasdaq: Stock Analysis'
+# 'nasdaq: Stock Analysis'
 ---
 
 ## Description
