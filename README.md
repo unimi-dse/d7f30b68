@@ -1,6 +1,6 @@
 
 ---
-# 'nasdaq: Stock Analysis'
+# nasdaq: Stock Analysis Package
 ---
 
 ## Description
