@@ -13,6 +13,7 @@
 #' Q = NASDAQ Global Select MarketSM\cr
 #' G = NASDAQ Global MarketSM\cr
 #' S = NASDAQ Capital Market}
+#'
 #' \item{Test_Issue}{Indicates whether or not the security is a test security\cr
 #' Values:\cr
 #' Y = yes, it is a test issue\cr
