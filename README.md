@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# test2
-=======
+
 ---
 # 'nasdaq: Stock Analysis'
 ---
@@ -40,4 +38,3 @@ Argument Name  | Description
 #To see the stock information of Apple Inc.
 stock_details("AAPL","2017-02-12","2020-01-30")
 ```
->>>>>>> 56a29623eaffd13d9391117f6c079d29190c118d

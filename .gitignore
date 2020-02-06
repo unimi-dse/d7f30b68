@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-=======
 # History files
 .Rhistory
 .Rapp.history
@@ -43,4 +37,3 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
->>>>>>> 56a29623eaffd13d9391117f6c079d29190c118d
