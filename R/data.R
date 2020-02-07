@@ -37,4 +37,3 @@
 #' @source http://www.nasdaqtrader.com/trader.aspx?id=symboldirdefs
 "nasdaq_listed"
 
-ghdh
