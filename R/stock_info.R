@@ -18,8 +18,8 @@
 
 stock_details <- function(stock_name, start_date,end_date=Sys.Date())
 {
-  Date <- Close <- NULL
   # basic data cleaning steps
+  Date <- Close <- NULL
   stock_name <- toupper(stock_name)
   stock_name <- trimws(gsub("[^A-Z]","",stock_name))
 
@@ -34,8 +34,6 @@ stock_details <- function(stock_name, start_date,end_date=Sys.Date())
 
   n <- which(colnames(Stock_Info)=="Close.Last")
   colnames(Stock_Info)[n] <- "Close"
-
-  # globalVariables(c("Date", "Close"))
 
   # Removing the $ sign from the data columns
   Stock_Info[,c("Close","Open","High","Low")] <- as.data.frame(apply
@@ -92,12 +90,6 @@ check_file <- function(stock_name, start_date,end_date)
 
   # Checking if the file has data or not
   my_text<-readLines(dest)
-  # if(my_text==""&length(my_text)==1)
-  # {
-  #   stop("NO DATA AVAILABLE, KINDLY CHECK THE INPUT DATE")   # Stock name and date format are correct but data not available for the particular
-  #   options( warn = -1 )                                     # Skiping the warning message
-  # }
-
   ifelse(my_text==""&length(my_text)==1,stop("NO DATA AVAILABLE, KINDLY CHECK THE INPUT DATE"),return(dest))
 
 }
