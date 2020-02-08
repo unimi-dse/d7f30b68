@@ -108,7 +108,7 @@ check_file <- function(stock_name, start_date,end_date)
 
 argument_validation <- function(stock_name, start_date,end_date)
 {
-  if(!(grepl("[A-Z]",stock_name)))    #Checks stock Name
+  if(!(stock_name %in% nasdaq::nasdaq_listed$Symbol))    #Checks stock Name
   {
     stop("Check Stock Name; Refer nasdaq_listed dataset")
   }
