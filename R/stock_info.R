@@ -53,11 +53,9 @@ stock_details <- function(stock_name, start_date,end_date=Sys.Date())
   #plotting the data
   ggplot(data = Stock_Info,aes(x=Date,y=Close)) +
                   geom_line(color=trend_color) +
-                    labs(title = stock_name,
+                    labs(title = paste0(nasdaq::nasdaq_listed$Security_Name[which(stock_name==nasdaq::nasdaq_listed$Symbol)]," (",stock_name,")"),
                        subtitle = paste0(min(Stock_Info$Date)," to ",max(Stock_Info$Date)))
 }
-
-
 
 # check_file() function --------------------------------------------------------------
 
@@ -91,7 +89,6 @@ check_file <- function(stock_name, start_date,end_date)
   # Checking if the file has data or not
   my_text<-readLines(dest)
   ifelse(my_text==""&length(my_text)==1,stop("NO DATA AVAILABLE, KINDLY CHECK THE INPUT DATE"),return(dest))
-
 }
 
 # argument_validation() function -----------------------------------------------------
@@ -125,7 +122,6 @@ argument_validation <- function(stock_name, start_date,end_date)
 #' @param mydate a sting that represent the date
 #' @param date.format explicitly specifying the date format
 #' @return boolean value depending on the mydate value passed as argument
-#' @author Rijin Baby
 #' @details
 #' This function checks if the date value entered is in the YYYY-MM-DD format
 #' @export

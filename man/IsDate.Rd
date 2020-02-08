@@ -20,6 +20,3 @@ Function that checks the date format
 \details{
 This function checks if the date value entered is in the YYYY-MM-DD format
 }
-\author{
-Rijin Baby
-}
