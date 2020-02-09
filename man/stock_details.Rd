@@ -4,12 +4,16 @@
 \alias{stock_details}
 \title{Function that displays and plot the stock data}
 \usage{
-stock_details(stock_name, start_date, end_date = Sys.Date())
+stock_details(
+  stock_name,
+  start_date = Sys.Date() - years(10),
+  end_date = Sys.Date()
+)
 }
 \arguments{
 \item{stock_name}{a sting that represent the symbol of the Company listed in NASDAQ}
 
-\item{start_date}{a sting that represent the date}
+\item{start_date}{a sting that represent the date; By default 10 years from current date is considered}
 
 \item{end_date}{a sting that represent the date; Current date is taken as default if no value is provided}
 }
@@ -22,11 +26,6 @@ Function that displays and plot the stock data
 \details{
 The function initially cleans the entered argumets and check their validity. Then collect the data file,
 dispalys the data for the analysis
-}
-\seealso{
-\code{plot_ly}\code{layout}
-
-
 }
 \author{
 Rijin Baby

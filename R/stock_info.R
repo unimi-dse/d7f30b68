@@ -3,7 +3,7 @@
 
 #' Function that displays and plot the stock data
 #' @param stock_name a sting that represent the symbol of the Company listed in NASDAQ
-#' @param start_date a sting that represent the date
+#' @param start_date a sting that represent the date; By default 10 years from current date is considered
 #' @param end_date a sting that represent the date; Current date is taken as default if no value is provided
 #' @return Data and plot
 #' @author Rijin Baby
@@ -11,13 +11,14 @@
 #' The function initially cleans the entered argumets and check their validity. Then collect the data file,
 #' dispalys the data for the analysis
 #' @export
-#' @seealso \code{plot_ly}\code{layout}
-#' @seealso \code{read.csv} \code{View} \{globalVariables}
+# @seealso \code{plot_ly}\code{layout}
+# @seealso \code{read.csv} \code{View} \{globalVariables}
 #' @importFrom plotly plot_ly layout
 #' @importFrom utils View read.csv globalVariables
 #' @importFrom dplyr mutate %>%
+#' @importFrom lubridate years
 
-stock_details <- function(stock_name, start_date,end_date=Sys.Date())
+stock_details <- function(stock_name, start_date=Sys.Date()-years(10),end_date=Sys.Date())
 {
   # basic data cleaning steps
   Date <- Close_Price <- NULL
@@ -28,7 +29,7 @@ stock_details <- function(stock_name, start_date,end_date=Sys.Date())
   argument_validation(stock_name,start_date,end_date)
 
   # Calling check_file() function for the file path
-  dest <- check_file(stock_name, start_date,end_date)
+  dest <- check_file(stock_name)
 
   # reading the data
   Stock_Info <- read.csv(dest, stringsAsFactors=FALSE)
@@ -43,6 +44,8 @@ stock_details <- function(stock_name, start_date,end_date=Sys.Date())
 
   # converting the charater date argument to date
   Stock_Info$Date <- as.Date(Stock_Info$Date,format="%m/%d/%Y")
+  #filtering data based on date range
+  Stock_Info <- Stock_Info[-which(Stock_Info$Date<start_date|Stock_Info$Date>end_date),]
 
   # Displaying the final data
   View(Stock_Info)
@@ -62,8 +65,6 @@ stock_details <- function(stock_name, start_date,end_date=Sys.Date())
 #Check if the data already exist in the directory else download and return the file path
 #' Function that search for data file
 #' @param stock_name a sting that represent the symbol of the Company listed in NASDAQ
-#' @param start_date a sting that represent the date
-#' @param end_date a sting that represent the date
 #' @return file path of the csv file
 #' @author Rijin Baby
 #' @details
@@ -71,16 +72,17 @@ stock_details <- function(stock_name, start_date,end_date=Sys.Date())
 #' If the file is found in the directory the file path is returned else this function download the file
 #' from the NASDAQ website and return the file path. In case of no data present in the file the function terminates the process
 #' @export
-#' @seealso \code{download.file}
+# @seealso \code{download.file}
 #' @importFrom utils download.file
+#' @importFrom lubridate years
 
-check_file <- function(stock_name, start_date,end_date)
+check_file <- function(stock_name)
 {
   # Construct web URL
-  src <- paste0("https://www.nasdaq.com/api/v1/historical/",stock_name,"/stocks/",start_date,"/",end_date)
+  src <- paste0("https://www.nasdaq.com/api/v1/historical/",stock_name,"/stocks/",Sys.Date()-years(10),"/",Sys.Date())
 
   # Construct path for storing local file
-  dest <- file.path("~/",paste0(stock_name,"_",start_date,"_",end_date,".csv"))
+  dest <- file.path("~/",paste0(stock_name,"_",Sys.Date()-years(10),"_",Sys.Date(),".csv"))
 
   # Don't download if the file is already there!
   if(!file.exists(dest))
@@ -88,7 +90,8 @@ check_file <- function(stock_name, start_date,end_date)
 
   # Checking if the file has data or not
   my_text<-readLines(dest)
-  ifelse(my_text==""&length(my_text)==1,stop("NO DATA FOUND ON THE WEBSITE, KINDLY MODIFY THE INPUT DATE"),return(dest))
+  ifelse(my_text==""&length(my_text)==1,stop("NO DATA FOUND ON THE WEBSITE, KINDLY MODIFY THE INPUT DATE"),
+         return(dest))
 }
 
 # argument_validation() function -----------------------------------------------------

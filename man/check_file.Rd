@@ -4,14 +4,10 @@
 \alias{check_file}
 \title{Function that search for data file}
 \usage{
-check_file(stock_name, start_date, end_date)
+check_file(stock_name)
 }
 \arguments{
 \item{stock_name}{a sting that represent the symbol of the Company listed in NASDAQ}
-
-\item{start_date}{a sting that represent the date}
-
-\item{end_date}{a sting that represent the date}
 }
 \value{
 file path of the csv file
@@ -23,9 +19,6 @@ Function that search for data file
 This function initially checks if the file with stock details is present in the directory or not.
 If the file is found in the directory the file path is returned else this function download the file
 from the NASDAQ website and return the file path. In case of no data present in the file the function terminates the process
-}
-\seealso{
-\code{download.file}
 }
 \author{
 Rijin Baby

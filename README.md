@@ -5,7 +5,7 @@
 
 ## Description
 
-The nasdaq pakage accept the stock details like stock name and date range values from the user and provide all the stock values between the date range along with the trend graph.
+The nasdaq pakage accept the stock details like stock name and date range values from the user and provide all the stock values between the date range along with the trend graph for analysis.
 
 ## Installation
 ```
