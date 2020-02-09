@@ -11,15 +11,15 @@
 #' The function initially cleans the entered argumets and check their validity. Then collect the data file,
 #' dispalys the data for the analysis
 #' @export
-#' @seealso \code{ggplot} \code{aes} \code{labs} \code{geom_line}
+#' @seealso \code{plot_ly}\code{layout}
 #' @seealso \code{read.csv} \code{View} \{globalVariables}
-#' @importFrom ggplot2 ggplot aes labs geom_line
+#' @importFrom plotly plot_ly layout
 #' @importFrom utils View read.csv globalVariables
 
 stock_details <- function(stock_name, start_date,end_date=Sys.Date())
 {
   # basic data cleaning steps
-  Date <- Close <- NULL
+  Date <- Close_Price <- NULL
   stock_name <- toupper(stock_name)
   stock_name <- trimws(gsub("[^A-Z]","",stock_name))
 
@@ -33,11 +33,11 @@ stock_details <- function(stock_name, start_date,end_date=Sys.Date())
   Stock_Info <- read.csv(dest, stringsAsFactors=FALSE)
 
   n <- which(colnames(Stock_Info)=="Close.Last")
-  colnames(Stock_Info)[n] <- "Close"
+  colnames(Stock_Info)[n] <- "Close_Price"
 
   # Removing the $ sign from the data columns
-  Stock_Info[,c("Close","Open","High","Low")] <- as.data.frame(apply
-                                                               (Stock_Info[,c("Close","Open","High","Low")],2,
+  Stock_Info[,c("Close_Price","Open","High","Low")] <- as.data.frame(apply
+                                                               (Stock_Info[,c("Close_Price","Open","High","Low")],2,
                                                                  FUN = function(y) as.numeric(gsub("\\$","",y))))
 
   # converting the charater date argument to date
@@ -47,15 +47,14 @@ stock_details <- function(stock_name, start_date,end_date=Sys.Date())
   View(Stock_Info)
 
   # Assigning the line colour based on the trend
-  if(Stock_Info$Close[nrow(Stock_Info)]<=Stock_Info$Close[1])trend_color <- "blue"
+  if(Stock_Info$Close_Price[nrow(Stock_Info)]<=Stock_Info$Close_Price[1])trend_color <- "blue"
   else trend_color <- "red"
 
   #plotting the data
-  ggplot(data = Stock_Info,aes(x=Date,y=Close)) +
-                  geom_line(color=trend_color) +
-                    labs(title = paste0(nasdaq::nasdaq_listed$Security_Name[which(stock_name==nasdaq::nasdaq_listed$Symbol)]," (",stock_name,")"),
-                       subtitle = paste0(min(Stock_Info$Date)," to ",max(Stock_Info$Date)))
-}
+  plotly::plot_ly(Stock_Info, x = ~Date, y = ~Close_Price, type = 'scatter', mode = 'lines',color = I(trend_color)) %>%
+  plotly::layout(title =paste0(nasdaq::nasdaq_listed$Security_Name[which(stock_name==nasdaq::nasdaq_listed$Symbol)]," (",stock_name,")"))
+
+  }
 
 # check_file() function --------------------------------------------------------------
 
@@ -88,7 +87,7 @@ check_file <- function(stock_name, start_date,end_date)
 
   # Checking if the file has data or not
   my_text<-readLines(dest)
-  ifelse(my_text==""&length(my_text)==1,stop("NO DATA AVAILABLE, KINDLY CHECK THE INPUT DATE"),return(dest))
+  ifelse(my_text==""&length(my_text)==1,stop("NO DATA FOUND ON THE WEBSITE, KINDLY MODIFY THE INPUT DATE"),return(dest))
 }
 
 # argument_validation() function -----------------------------------------------------

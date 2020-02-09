@@ -24,7 +24,7 @@ The function initially cleans the entered argumets and check their validity. The
 dispalys the data for the analysis
 }
 \seealso{
-\code{ggplot} \code{aes} \code{labs} \code{geom_line}
+\code{plot_ly}\code{layout}
 
 
 }
