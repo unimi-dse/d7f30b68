@@ -15,6 +15,7 @@
 #' @seealso \code{read.csv} \code{View} \{globalVariables}
 #' @importFrom plotly plot_ly layout
 #' @importFrom utils View read.csv globalVariables
+#' @importFrom dplyr mutate %>%
 
 stock_details <- function(stock_name, start_date,end_date=Sys.Date())
 {
