@@ -11,8 +11,8 @@
 #' The function initially cleans the entered argumets and check their validity. Then collect the data file,
 #' dispalys the data for the analysis
 #' @export
-# @seealso \code{plot_ly}\code{layout}
-# @seealso \code{read.csv} \code{View} \{globalVariables}
+#' @seealso \code{plot_ly}\code{layout}
+#' @seealso \code{read.csv} \code{View} \{globalVariables}
 #' @importFrom plotly plot_ly layout
 #' @importFrom utils View read.csv globalVariables
 #' @importFrom dplyr mutate %>%
@@ -48,7 +48,7 @@ stock_details <- function(stock_name, start_date=Sys.Date()-years(10),end_date=S
   Stock_Info <- Stock_Info[-which(Stock_Info$Date<start_date|Stock_Info$Date>end_date),]
 
   # Displaying the final data
-  View(Stock_Info)
+  View(Stock_Info,title = paste0(nasdaq::nasdaq_listed$Security_Name[which(stock_name==nasdaq::nasdaq_listed$Symbol)]," (",stock_name,")"))
 
   # Assigning the line colour based on the trend
   if(Stock_Info$Close_Price[nrow(Stock_Info)]<=Stock_Info$Close_Price[1])trend_color <- "blue"
@@ -72,7 +72,7 @@ stock_details <- function(stock_name, start_date=Sys.Date()-years(10),end_date=S
 #' If the file is found in the directory the file path is returned else this function download the file
 #' from the NASDAQ website and return the file path. In case of no data present in the file the function terminates the process
 #' @export
-# @seealso \code{download.file}
+#' @seealso \code{download.file}
 #' @importFrom utils download.file
 #' @importFrom lubridate years
 

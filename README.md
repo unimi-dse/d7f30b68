@@ -30,8 +30,8 @@ stock_details(stock_name, start_date,end_date)
 Argument Name  | Description
 ---------------|--------------
 *stock_name*   |Symbol of the stock
-*start_date*   |Initial date in YYYY-MM-DD format
-*end_date*     |Final date in YYYY-MM-DD format; By default this takes todays date
+*start_date*   |Initial date in YYYY-MM-DD format; Default Value = 10 years from current date
+*end_date*     |Final date in YYYY-MM-DD format; Default Value = Current Date
 
 ## Example
 ```

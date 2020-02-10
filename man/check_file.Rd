@@ -20,6 +20,9 @@ This function initially checks if the file with stock details is present in the 
 If the file is found in the directory the file path is returned else this function download the file
 from the NASDAQ website and return the file path. In case of no data present in the file the function terminates the process
 }
+\seealso{
+\code{download.file}
+}
 \author{
 Rijin Baby
 }

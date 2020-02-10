@@ -27,6 +27,11 @@ Function that displays and plot the stock data
 The function initially cleans the entered argumets and check their validity. Then collect the data file,
 dispalys the data for the analysis
 }
+\seealso{
+\code{plot_ly}\code{layout}
+
+
+}
 \author{
 Rijin Baby
 }
