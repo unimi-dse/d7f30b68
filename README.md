@@ -1,4 +1,5 @@
 
+<div><img src="https://www.nasdaq.com/themes/nsdq/dist/assets/images/logo.svg" width="200px" align="right"></div>
 ---
 # nasdaq: Stock Analysis Package
 ---
@@ -26,7 +27,7 @@ require(nasdaq)
 #calling the main function
 stock_details(stock_name, start_date,end_date)
 ```
-## Arguments
+## Arguments of stock_details()
 Argument Name  | Description
 ---------------|--------------
 *stock_name*   |Symbol of the stock
@@ -37,4 +38,7 @@ Argument Name  | Description
 ```
 #To see the stock information of Apple Inc.
 stock_details("AAPL","2017-02-12","2020-01-30")
+
+#To see the stock information of Facebook Inc.
+stock_details("fb")
 ```
