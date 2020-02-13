@@ -45,7 +45,10 @@ stock_details <- function(stock_name, start_date=Sys.Date()-years(10),end_date=S
   # converting the charater date argument to date
   Stock_Info$Date <- as.Date(Stock_Info$Date,format="%m/%d/%Y")
   #filtering data based on date range
-  Stock_Info <- Stock_Info[-which(Stock_Info$Date<start_date|Stock_Info$Date>end_date),]
+  if(!start_date==Sys.Date()-years(10)&!end_date==Sys.Date())
+  {
+    Stock_Info <- Stock_Info[-which(Stock_Info$Date<start_date|Stock_Info$Date>end_date),]
+  }
 
   # Displaying the final data
   View(Stock_Info,title = paste0(nasdaq::nasdaq_listed$Security_Name[which(stock_name==nasdaq::nasdaq_listed$Symbol)]," (",stock_name,")"))
@@ -81,8 +84,8 @@ check_file <- function(stock_name)
   # Construct web URL
   src <- paste0("https://www.nasdaq.com/api/v1/historical/",stock_name,"/stocks/",Sys.Date()-years(10),"/",Sys.Date())
 
-  # Construct path for storing local file
-  dest <- file.path("~/",paste0(stock_name,"_",Sys.Date()-years(10),"_",Sys.Date(),".csv"))
+  # Construct path for storing local file temporarily
+  dest <- tempfile(stock_name,fileext = ".csv")
 
   # Don't download if the file is already there!
   if(!file.exists(dest))
