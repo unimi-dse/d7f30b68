@@ -6,7 +6,7 @@
 \usage{
 stock_details(
   stock_name,
-  start_date = Sys.Date() - years(10),
+  start_date = Sys.Date() - lubridate::years(10),
   end_date = Sys.Date()
 )
 }
@@ -30,7 +30,7 @@ dispalys the data for the analysis
 \seealso{
 \code{plot_ly}\code{layout}
 
-
+\code{read.csv} \code{View}
 }
 \author{
 Rijin Baby

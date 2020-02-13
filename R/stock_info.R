@@ -12,13 +12,13 @@
 #' dispalys the data for the analysis
 #' @export
 #' @seealso \code{plot_ly}\code{layout}
-#' @seealso \code{read.csv} \code{View} \{globalVariables}
+#' @seealso \code{read.csv} \code{View}
 #' @importFrom plotly plot_ly layout
-#' @importFrom utils View read.csv globalVariables
+#' @importFrom utils View read.csv
 #' @importFrom dplyr mutate %>%
 #' @importFrom lubridate years
 
-stock_details <- function(stock_name, start_date=Sys.Date()-years(10),end_date=Sys.Date())
+stock_details <- function(stock_name, start_date=Sys.Date()-lubridate::years(10),end_date=Sys.Date())
 {
   # basic data cleaning steps
   Date <- Close_Price <- NULL
@@ -32,7 +32,7 @@ stock_details <- function(stock_name, start_date=Sys.Date()-years(10),end_date=S
   file_location <- get_data(stock_name)
 
   # reading the data
-  Stock_Info <- read.csv(file_location, stringsAsFactors=FALSE)
+  Stock_Info <- utils::read.csv(file_location, stringsAsFactors=FALSE)
 
   column_index <- which(colnames(Stock_Info)=="Close.Last")
   colnames(Stock_Info)[column_index] <- "Close_Price"
@@ -45,7 +45,7 @@ stock_details <- function(stock_name, start_date=Sys.Date()-years(10),end_date=S
   # converting the charater date argument to date
   Stock_Info$Date <- as.Date(Stock_Info$Date,format="%m/%d/%Y")
   #filtering data based on date range
-  if(!start_date==Sys.Date()-years(10)&!end_date==Sys.Date())
+  if(!start_date==Sys.Date()-lubridate::years(10)&!end_date==Sys.Date())
   {
     Stock_Info <- Stock_Info[-which(Stock_Info$Date<start_date|Stock_Info$Date>end_date),]
   }
@@ -88,7 +88,7 @@ get_data <- function(stock_name)
 
   # Don't download if the file is already there!
   if(!file.exists(file_location))
-    download.file(src_website, file_location, quiet = TRUE)
+    utils::download.file(src_website, file_location, quiet = TRUE)
 
   # Checking if the file has data or not
   file_check<-readLines(file_location)
