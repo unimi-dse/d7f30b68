@@ -2,7 +2,7 @@
 % Please edit documentation in R/stock_info.R
 \name{stock_details}
 \alias{stock_details}
-\title{Function that displays and plot the stock data}
+\title{Function that displays and plot the stock data. By default the function gives 10 years data for the stock if the start and end dates are not specified}
 \usage{
 stock_details(
   stock_name,
@@ -21,10 +21,10 @@ stock_details(
 Data and plot
 }
 \description{
-Function that displays and plot the stock data
+Function that displays and plot the stock data. By default the function gives 10 years data for the stock if the start and end dates are not specified
 }
 \details{
-The function initially cleans the entered argumets and check their validity. Then collect the data file,
+The function initially cleans the entered argumets and check their validity. Then update the data file and finally
 dispalys the data for the analysis
 }
 \seealso{

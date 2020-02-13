@@ -2,7 +2,7 @@
 
 export(IsDate)
 export(argument_validation)
-export(check_file)
+export(get_data)
 export(stock_details)
 importFrom(dplyr,"%>%")
 importFrom(dplyr,mutate)
