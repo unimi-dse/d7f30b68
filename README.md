@@ -1,8 +1,8 @@
 
 ---
-# nasdaq: Stock Analysis Package
----
+# nasdaq: Stock Analysis Package   
 <div><img src="https://www.nasdaq.com/themes/nsdq/dist/assets/images/logo.svg" width="200px" align="right"></div>
+---
 
 ## Description
 
