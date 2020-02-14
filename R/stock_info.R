@@ -51,7 +51,7 @@ stock_details <- function(stock_name, start_date=Sys.Date()-lubridate::years(10)
   }
 
   # Displaying the final data
-  View(Stock_Info,title = paste0(nasdaq::nasdaq_listed$Security_Name[which(stock_name==nasdaq::nasdaq_listed$Symbol)]," (",stock_name,")"))
+  #View(Stock_Info,title = paste0(nasdaq::nasdaq_listed$Security_Name[which(stock_name==nasdaq::nasdaq_listed$Symbol)]," (",stock_name,")"))
 
   # Assigning the line colour based on the trend
   if(Stock_Info$Close_Price[nrow(Stock_Info)]<=Stock_Info$Close_Price[1])trend_color <- "blue"
@@ -118,6 +118,11 @@ argument_validation <- function(stock_name, start_date,end_date)
   if(!IsDate(start_date)|!IsDate(end_date))   #Checks date fornat
   {
     stop("Check Date Format")
+  }
+
+  if((start_date)>=(end_date))   #Checks date fornat
+  {
+    stop("Check Dates")
   }
 }
 
