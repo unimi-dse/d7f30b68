@@ -39,6 +39,8 @@ The package contains a datset for all the nasdaq listed stock name and its symbo
 # To view nasdaq_listed dataset documentation
 ?nasdaq::nasdaq_listed
 ```
+## stock_view_app() Preview
+![](inst/img/stock_view_app.JPG)
 
 ## stock_view() Examples
 ```
