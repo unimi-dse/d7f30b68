@@ -20,34 +20,36 @@ devtools::install_github('unimi-dse/d7f30b68')
 # load the package
 require(nasdaq)
 
-#calling the main function
-stock_details(stock_name, start_date,end_date)
-```
-# Arguments of stock_details()
+# Running the shiny application
+stock_view_app()
 
-Argument Name  | Description
+# Calling the function that just plot the data
+stock_view(stock_name, start_date,end_date)
+```
+## User Inputs
+Name  | Description
 ---------------|--------------
-*stock_name*   |Symbol of the stock
-*start_date*   |Initial date in YYYY-MM-DD format; Default Value = 10 years from current date
-*end_date*     |Final date in YYYY-MM-DD format; Default Value = Current Date
+*stock name*   |Symbol of the stock
+*start date*   |Initial date in YYYY-MM-DD format
+*end date*     |Final date in YYYY-MM-DD format
 
 ## Dataset
 The package contains a datset for all the nasdaq listed stock name and its symbols along with other useful information. Reference <http://www.nasdaqtrader.com/trader.aspx?id=symboldirdefs>
 ```
-#nasdaq_listed dataset documentation
+# To view nasdaq_listed dataset documentation
 ?nasdaq::nasdaq_listed
 ```
 
-## Example
+## stock_view() Examples
 ```
-#To see the stock information of Apple Inc.
-stock_details("AAPL","2017-02-12","2020-01-30")
+#To see the stock plot of Apple Inc.
+stock_view("AAPL","2017-02-12","2020-01-30")
 
-#To see the stock information of Facebook Inc.
-stock_details("fb")
+#To see the stock plot of Facebook Inc. for last 10 years
+stock_view("fb")
 ```
-# Most Popular Stocks
-SYMBOL       | COMPANY NAME
+## Most Popular Stocks
+Symbol       | Company Name
 -------------|--------------
 *AAPL*       |Apple, Inc.
 *SBUX*       |Starbucks, Inc.
@@ -57,3 +59,7 @@ SYMBOL       | COMPANY NAME
 *TSLA*       |Tesla, Inc.
 *QCOM*       |QUALCOMM, Inc.
 *CSCO*       |Cisco Systems, Inc.
+
+## Author
+Rijin Baby 
+[![](inst/img/linkedin.png){width=30px}](https://www.linkedin.com/in/rijin-baby/)

@@ -9,5 +9,5 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
-Imports: plotly, utils, dplyr,lubridate
+Imports: plotly, utils, dplyr,lubridate, shiny,DT
 Depends: R (>= 2.10)
