@@ -31,7 +31,7 @@ ui <- fluidPage(
         mainPanel(
             plotly::plotlyOutput("testplot1"),
             # h2("Data"),
-           DT::dataTableOutput("mytable"),
+            DT::dataTableOutput("mytable"),
         )
     )
 )

@@ -13,7 +13,7 @@
 
 stock_view_app <- function()
 {
-  shiny::runApp('inst/stock_view_app')
+  shiny::runApp('inst/stock_view_application')
 }
 
 
