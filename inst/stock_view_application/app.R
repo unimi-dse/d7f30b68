@@ -1,7 +1,7 @@
 
 library(shiny)
 library(dplyr)
-require(DT)
+library(DT)
 
 # Define UI for application that displays stock information
 ui <- fluidPage(
