@@ -13,7 +13,7 @@
 
 stock_view_app <- function()
 {
-  shiny::runApp(appDir = 'inst/stock_view_application_1')
+  shiny::runApp(system.file("stock_view_application_2",package = "nasdaq"))
 }
 
 
