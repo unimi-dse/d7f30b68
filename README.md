@@ -62,4 +62,5 @@ Symbol       | Company Name
 
 ## Author
 Rijin Baby 
+[![](inst/img/linkedin.png)](https://www.linkedin.com/in/rijin-baby/)
 
