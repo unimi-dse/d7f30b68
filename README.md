@@ -25,6 +25,10 @@ stock_view_app()
 
 # Calling the function that just plot the data
 stock_view(stock_name, start_date,end_date)
+
+# Calling the function that returns data table for further analysis
+stock_details(stock_name, start_date,end_date)
+
 ```
 ## User Inputs
 Name  | Description

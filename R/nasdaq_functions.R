@@ -104,6 +104,8 @@ stock_details <- function(stock_name, start_date=Sys.Date()-lubridate::years(10)
 {
   # Value initialization
   Date <- Close_Price <- NULL
+  stock_name <- toupper(stock_name)
+  stock_name <- trimws(gsub("[^A-Z]","",stock_name))
 
   # Calling the function to check the arguments
   argument_validation(stock_name,start_date,end_date)
