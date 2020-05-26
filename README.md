@@ -1,7 +1,7 @@
 
 ---
 # nasdaq: Historical Stock Price Analysis   
-<div><img src="https://www.nasdaq.com/themes/nsdq/dist/assets/images/logo.svg" width="200px" align="right"></div>
+<div><img src="inst/img/nasdaq.jpg" width="200px" align="right"></div>
 
 
 ## Description
